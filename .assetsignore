@@ -1,0 +1,6 @@
+src/
+wrangler.jsonc
+schema.sql
+README.md
+.git/
+.gitignore
