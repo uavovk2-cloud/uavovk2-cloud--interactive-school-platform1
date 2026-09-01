@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Уроки — інтерактивна платформа</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">✓</span><span>Уроки</span></div>
+    <div class="status"><span class="dot"></span> Онлайн</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">ІНТЕРАКТИВНА ШКІЛЬНА ПЛАТФОРМА</div>
+      <h1>Проводь уроки.<br><span>Залучай учнів.</span></h1>
+      <p>Простий вхід на урок за кодом — без реєстрації учня.</p>
+
+      <div class="cards">
+        <button class="card teacher" onclick="showTeacher()">
+          <div class="icon">🎓</div>
+          <h2>Я вчитель</h2>
+          <p>Створити та провести урок</p>
+          <span class="arrow">→</span>
+        </button>
+        <button class="card student" onclick="showStudent()">
+          <div class="icon">👨‍🎓</div>
+          <h2>Я учень</h2>
+          <p>Приєднатися за кодом</p>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="teacherPanel" class="panel hidden">
+      <button class="back" onclick="goHome()">← Назад</button>
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow">КАБІНЕТ ВЧИТЕЛЯ</div>
+          <h2>Створити урок</h2>
+        </div>
+      </div>
+      <label>Назва уроку</label>
+      <input id="lessonName" placeholder="Наприклад: Інформатика — 5 клас">
+      <label>Предмет</label>
+      <input id="subject" placeholder="Інформатика">
+      <button class="primary" onclick="createDemoLesson()">Створити урок</button>
+      <div id="teacherResult" class="result hidden"></div>
+    </section>
+
+    <section id="studentPanel" class="panel hidden">
+      <button class="back" onclick="goHome()">← Назад</button>
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow">ВХІД УЧНЯ</div>
+          <h2>Приєднатися до уроку</h2>
+        </div>
+      </div>
+      <label>Твоє ім'я</label>
+      <input id="studentName" placeholder="Наприклад: Андрій">
+      <label>Код уроку</label>
+      <input id="roomCode" class="code-input" inputmode="numeric" maxlength="6" placeholder="123456">
+      <button class="primary" onclick="joinDemoLesson()">Приєднатися</button>
+      <div id="studentResult" class="result hidden"></div>
+    </section>
+
+    <section id="lessonPanel" class="panel hidden">
+      <button class="back" onclick="goHome()">← Вийти</button>
+      <div class="lesson-live"><span class="dot"></span> Урок активний</div>
+      <h2 id="lessonTitle">Інтерактивний урок</h2>
+      <div class="room-code"><small>КОД УРОКУ</small><strong id="shownCode">123456</strong></div>
+      <div class="activity">
+        <span class="activity-number">1</span>
+        <div>
+          <div class="eyebrow">ЗАПИТАННЯ</div>
+          <h3>Готові розпочати?</h3>
+          <p>Це демонстраційний екран першої версії платформи.</p>
+        </div>
+      </div>
+      <button class="primary" onclick="answer()">Я готовий / готова</button>
+      <div id="answerResult" class="success hidden">Відповідь отримано ✓</div>
+    </section>
+  </main>
+
+  <footer>© 2026 Інтерактивна шкільна платформа</footer>
+  <script src="app.js"></script>
+</body>
+</html>
