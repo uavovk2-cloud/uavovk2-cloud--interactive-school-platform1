@@ -29,6 +29,7 @@
     <div class="eyebrow">КАБІНЕТ ВЧИТЕЛЯ</div><h2>Створити урок</h2>
     <label>Назва уроку</label><input id="lessonName" placeholder="Наприклад: Інформатика — 5 клас">
     <label>Предмет</label><input id="subject" placeholder="Інформатика">
+    <label>Клас</label><input id="grade" placeholder="5 клас">
     <button class="primary" onclick="createLesson()">Створити урок</button>
     <div id="teacherSetupResult" class="result hidden"></div>
   </section>
@@ -36,6 +37,15 @@
   <section id="teacherRoom" class="panel wide hidden">
     <button class="back" onclick="goHome()">← На головну</button>
     <div class="room-header"><div><div class="eyebrow">КАБІНЕТ ВЧИТЕЛЯ</div><h2 id="teacherTitle">Урок</h2><p id="teacherSubject" class="muted"></p></div><div class="big-code"><small>КОД</small><strong id="teacherCode"></strong></div></div>
+
+    <div class="ai-box">
+      <div class="section-head"><div><h3>🤖 Створення уроку через ChatGPT</h3><p class="muted">Сайт дає промт → ChatGPT повертає JSON → ти вставляєш його сюди → питання створюються автоматично.</p></div></div>
+      <button class="secondary" onclick="makeAiPrompt()">📋 Скопіювати промт для ChatGPT</button>
+      <textarea id="aiImport" rows="8" placeholder="Встав сюди JSON, який повернув ChatGPT..."></textarea>
+      <button class="primary" onclick="importAiLesson()">⚡ Імпортувати урок</button>
+      <div id="aiImportResult" class="result hidden"></div>
+    </div>
+
     <div class="teacher-grid">
       <div>
         <div class="section-head"><h3>Питання</h3><button class="secondary" onclick="openQuestionForm()">＋ Додати</button></div>
@@ -45,7 +55,7 @@
           <button class="primary" onclick="addQuestion()">Зберегти питання</button>
         </div>
         <div id="questions" class="list"></div>
-        <div class="controls"><button class="primary" onclick="control('start')">▶ Розпочати урок</button><button class="secondary" onclick="control('next')">Наступне питання →</button><button class="danger" onclick="control('stop')">Завершити</button></div>
+        <div class="controls"><button id="startLessonBtn" class="primary" onclick="control('start')">▶ Розпочати урок</button><button class="secondary" onclick="control('next')">Наступне питання →</button><button class="danger" onclick="control('stop')">Завершити</button></div>
       </div>
       <aside class="people"><div class="section-head"><h3>Учні</h3><span id="studentCount" class="pill">0</span></div><div id="students" class="list"></div><div class="live-box"><b>Поточна активність</b><div id="teacherCurrent" class="muted">Питання ще не запущено.</div></div><div id="answers" class="list"></div></aside>
     </div>
